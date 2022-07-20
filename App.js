@@ -152,50 +152,140 @@ const styles = StyleSheet.create({
   },
 });
 
-// import {  StatusBar, StyleSheet, Text } from "react-native";
+// import { StatusBar, StyleSheet, Text } from "react-native";
 // import CategoriesScreen from "./UdemyCourse/Meals/screens/CategoriesScreen";
 // import { NavigationContainer } from "@react-navigation/native";
 // import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // import MealsOverviewScreen from "./UdemyCourse/Meals/screens/MealsOverviewScreen";
 // import MealDetailScreen from "./UdemyCourse/Meals/screens/MealDetailScreen";
+// import { createDrawerNavigator } from "@react-navigation/drawer";
+// import FavoritesScreen from "./UdemyCourse/Meals/screens/FavoritesScreen";
+// import { Ionicons } from "@expo/vector-icons";
+// import FavoritesContextProvider from "./UdemyCourse/Meals/store/context/favorites-context";
+// import { Provider } from "react-redux";
+// import { store } from "./UdemyCourse/Meals/store/redux/store";
 
 // const Stack = createNativeStackNavigator();
+// const Drawer = createDrawerNavigator();
+
+// function DrawerNavigator() {
+//   return (
+//     <Drawer.Navigator
+//       screenOptions={{
+//         headerStyle: { backgroundColor: "#351401" },
+//         headerTintColor: "white",
+//         sceneContainerStyle: {
+//           backgroundColor: "#3f2f25",
+//         },
+//         drawerContentStyle: {
+//           backgroundColor: "#351401",
+//         },
+//         drawerInactiveTintColor: "white",
+//         drawerActiveTintColor: "#351401",
+//         drawerActiveBackgroundColor: "#e4baa1",
+//       }}
+//     >
+//       <Drawer.Screen
+//         name="Categories"
+//         component={CategoriesScreen}
+//         options={{
+//           title: "All Categories",
+//           drawerIcon: ({ color, size }) => (
+//             <Ionicons name="list" color={color} size={size} />
+//           ),
+//         }}
+//       />
+//       <Drawer.Screen
+//         name="Favorites"
+//         component={FavoritesScreen}
+//         options={{
+//           title: "Favorites",
+//           drawerIcon: ({ color, size }) => (
+//             <Ionicons name="star" color={color} size={size} />
+//           ),
+//         }}
+//       />
+//     </Drawer.Navigator>
+//   );
+// }
 // export default function App() {
 //   return (
 //     <>
 //       <StatusBar style="light" />
-//       <NavigationContainer>
-//         <Stack.Navigator
-//           screenOptions={{
-//             headerStyle: { backgroundColor: "#351401" },
-//             headerTintColor: "white",
-//             contentStyle: {
-//               backgroundColor: "#3f2f25",
-//             },
-//           }}
-//         >
-//           <Stack.Screen
-//             name="MealsCategories"
-//             component={CategoriesScreen}
-//             options={{
-//               title: "All Categories",
+//       <FavoritesContextProvider>
+//         <NavigationContainer>
+//           <Stack.Navigator
+//             screenOptions={{
+//               headerStyle: { backgroundColor: "#351401" },
+//               headerTintColor: "white",
+//               contentStyle: {
+//                 backgroundColor: "#3f2f25",
+//               },
 //             }}
-//           />
-//           <Stack.Screen
-//             name="MealsOverview"
-//             component={MealsOverviewScreen}
-//             // options={({ route, navigation }) => {
-//             //   const catId = route.params.categoryId;
-//             //   return {
-//             //     title: catId,
-//             //   };
-//             // }}
-//           />
-//           <Stack.Screen name="MealDetail" component={MealDetailScreen} />
-//         </Stack.Navigator>
-//       </NavigationContainer>
+//           >
+//             <Stack.Screen
+//               name="Drawer"
+//               component={DrawerNavigator}
+//               options={{
+//                 headerShown: false,
+//               }}
+//             />
+//             <Stack.Screen
+//               name="MealsOverview"
+//               component={MealsOverviewScreen}
+//             />
+//             <Stack.Screen
+//               name="MealDetail"
+//               component={MealDetailScreen}
+//               options={{
+//                 title: "About the Meal",
+//               }}
+//             />
+//           </Stack.Navigator>
+//         </NavigationContainer>
+//       </FavoritesContextProvider>
 //     </>
 //   );
 // }
 
 // const styles = StyleSheet.create({});
+
+// import { NavigationContainer } from "@react-navigation/native";
+// import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+// import WelcomeScreen from "./UdemyCourse/DrawerExample/screens/WelcomeScreen";
+// import UserScreen from "./UdemyCourse/DrawerExample/screens/UserScreen";
+// import { Ionicons } from "@expo/vector-icons";
+
+// const BottomTab = createBottomTabNavigator();
+// export default function App() {
+//   return (
+//     <NavigationContainer>
+//       <BottomTab.Navigator
+//         screenOptions={{
+//           headerStyle: { backgroundColor: "#3c0a6b" },
+//           headerTintColor: "white",
+//           tabBarActiveTintColor: "#3c0a6b",
+//         }}
+//       >
+//         <BottomTab.Screen
+//           name="Welcome"
+//           component={WelcomeScreen}
+//           options={{
+//             tabBarIcon: ({ color, size }) => (
+//               <Ionicons name="home" color={color} size={size} />
+//             ),
+//           }}
+//         />
+//         <BottomTab.Screen
+//           name="User"
+//           component={UserScreen}
+//           options={{
+//             tabBarIcon: ({ color, size }) => (
+//               <Ionicons name="person" color={color} size={size} />
+//             ),
+//           }}
+//         />
+//       </BottomTab.Navigator>
+//     </NavigationContainer>
+//   );
+// }

@@ -1,3 +1,5 @@
+//Adding Goals //
+
 // import { useState } from "react";
 // import { Button, FlatList, StyleSheet, View } from "react-native";
 // import { StatusBar } from "expo-status-bar";
@@ -77,80 +79,83 @@
 //   },
 // });
 
-import { ImageBackground, SafeAreaView, StyleSheet } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-import { useState } from "react";
-import { useFonts } from "expo-font";
-import StartGameScreen from "./UdemyCourse/NumberGuessing/components/screens/StartGameScreen";
-import GameScreen from "./UdemyCourse/NumberGuessing/components/screens/GameScreen";
-import Colors from "./UdemyCourse/NumberGuessing/components/constants/colors";
-import GameOverScreen from "./UdemyCourse/NumberGuessing/components/screens/GameOverScreen";
-import AppLoading from "expo-app-loading";
+//Number Guessing//
+// import { ImageBackground, SafeAreaView, StyleSheet } from "react-native";
+// import { LinearGradient } from "expo-linear-gradient";
+// import { useState } from "react";
+// import { useFonts } from "expo-font";
+// import StartGameScreen from "./UdemyCourse/NumberGuessing/components/screens/StartGameScreen";
+// import GameScreen from "./UdemyCourse/NumberGuessing/components/screens/GameScreen";
+// import Colors from "./UdemyCourse/NumberGuessing/components/constants/colors";
+// import GameOverScreen from "./UdemyCourse/NumberGuessing/components/screens/GameOverScreen";
+// import AppLoading from "expo-app-loading";
 
-export default function App() {
-  const [userNumber, setUserNumber] = useState();
-  const [gameOver, setGameOver] = useState(true);
-  const [guessRounds, setGuessRounds] = useState(0);
-  const [fontsloaded] = useFonts({
-    "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
-    "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
-  });
-  if (!fontsloaded) {
-    return <AppLoading />;
-  }
-  function pickedNumberHandler(pickedNumber) {
-    setUserNumber(pickedNumber);
-    setGameOver(false);
-  }
-  function gameOverHandler(numberOfRounds) {
-    setGameOver(true);
-    setGuessRounds(numberOfRounds);
-  }
-  function startNewGameHandler() {
-    setUserNumber(null);
-    setGuessRounds(0);
-  }
-  let screen = <StartGameScreen onPickNumber={pickedNumberHandler} />;
-  if (userNumber) {
-    screen = (
-      <GameScreen userNumber={userNumber} onGameOver={gameOverHandler} />
-    );
-  }
-  if (gameOver && userNumber) {
-    screen = (
-      <GameOverScreen
-        userNumber={userNumber}
-        roundsNumber={guessRounds}
-        onStartNewGame={startNewGameHandler}
-      />
-    );
-  }
+// export default function App() {
+//   const [userNumber, setUserNumber] = useState();
+//   const [gameOver, setGameOver] = useState(true);
+//   const [guessRounds, setGuessRounds] = useState(0);
+//   const [fontsloaded] = useFonts({
+//     "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
+//     "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
+//   });
+//   if (!fontsloaded) {
+//     return <AppLoading />;
+//   }
+//   function pickedNumberHandler(pickedNumber) {
+//     setUserNumber(pickedNumber);
+//     setGameOver(false);
+//   }
+//   function gameOverHandler(numberOfRounds) {
+//     setGameOver(true);
+//     setGuessRounds(numberOfRounds);
+//   }
+//   function startNewGameHandler() {
+//     setUserNumber(null);
+//     setGuessRounds(0);
+//   }
+//   let screen = <StartGameScreen onPickNumber={pickedNumberHandler} />;
+//   if (userNumber) {
+//     screen = (
+//       <GameScreen userNumber={userNumber} onGameOver={gameOverHandler} />
+//     );
+//   }
+//   if (gameOver && userNumber) {
+//     screen = (
+//       <GameOverScreen
+//         userNumber={userNumber}
+//         roundsNumber={guessRounds}
+//         onStartNewGame={startNewGameHandler}
+//       />
+//     );
+//   }
 
-  return (
-    <LinearGradient
-      colors={[Colors.primary700, Colors.accent500]}
-      style={styles.rootScreen}
-    >
-      <ImageBackground
-        source={require("./assets/background.png")}
-        resizeMode="cover"
-        style={styles.rootScreen}
-        imageStyle={styles.backgroundImage}
-      >
-        <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
-      </ImageBackground>
-    </LinearGradient>
-  );
-}
+//   return (
+//     <LinearGradient
+//       colors={[Colors.primary700, Colors.accent500]}
+//       style={styles.rootScreen}
+//     >
+//       <ImageBackground
+//         source={require("./assets/background.png")}
+//         resizeMode="cover"
+//         style={styles.rootScreen}
+//         imageStyle={styles.backgroundImage}
+//       >
+//         <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
+//       </ImageBackground>
+//     </LinearGradient>
+//   );
+// }
 
-const styles = StyleSheet.create({
-  rootScreen: {
-    flex: 1,
-  },
-  backgroundImage: {
-    opacity: 0.15,
-  },
-});
+// const styles = StyleSheet.create({
+//   rootScreen: {
+//     flex: 1,
+//   },
+//   backgroundImage: {
+//     opacity: 0.15,
+//   },
+// });
+
+//Drawer Example//
 
 // import { StatusBar, StyleSheet, Text } from "react-native";
 // import CategoriesScreen from "./UdemyCourse/Meals/screens/CategoriesScreen";
@@ -289,3 +294,100 @@ const styles = StyleSheet.create({
 //     </NavigationContainer>
 //   );
 // }
+
+//Expense Tracker Example
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { StatusBar, StyleSheet } from "react-native";
+import { GlobalStyles } from "./UdemyCourse/ExpenseTrackerApp/constants/styles";
+import AllExpenses from "./UdemyCourse/ExpenseTrackerApp/screens/AllExpenses";
+import ManageExpenses from "./UdemyCourse/ExpenseTrackerApp/screens/ManageExpenses";
+import RecentExpenses from "./UdemyCourse/ExpenseTrackerApp/screens/RecentExpenses";
+import { Ionicons } from "@expo/vector-icons";
+import IconButton from "./UdemyCourse/ExpenseTrackerApp/components/UI/IconButton";
+const Stack = createNativeStackNavigator();
+const BottomTabs = createBottomTabNavigator();
+
+function ExpensesOverview() {
+  return (
+    <BottomTabs.Navigator
+      screenOptions={({ navigation }) => ({
+        headerStyle: { backgroundColor: GlobalStyles.colors.primary500 },
+        headerTintColor: "white",
+        tabBarStyle: { backgroundColor: GlobalStyles.colors.primary500 },
+        tabBarActiveTintColor: GlobalStyles.colors.accent500,
+        headerRight: ({ tintColor }) => (
+          <IconButton
+            icon="add"
+            color={tintColor}
+            size={24}
+            onPress={() => {
+              navigation.navigate("ManageExpense");
+            }}
+          />
+        ),
+      })}
+    >
+      <BottomTabs.Screen
+        name="RecentExpenses"
+        component={RecentExpenses}
+        options={{
+          title: "Recent Expenses",
+          tabBarLabel: "Recent",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="hourglass" color={color} size={size} />
+          ),
+        }}
+      />
+      <BottomTabs.Screen
+        name="AllExpenses"
+        component={AllExpenses}
+        options={{
+          title: "All Expenses",
+          tabBarLabel: "All Expenses",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons
+              name="calendar"
+              color={color}
+              size={size}
+              onPress={() => {}}
+            />
+          ),
+        }}
+      />
+    </BottomTabs.Navigator>
+  );
+}
+export default function App() {
+  return (
+    <>
+      <StatusBar style="auto" />
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: { backgroundColor: GlobalStyles.colors.primary500 },
+            headerTintColor: "white",
+          }}
+        >
+          <Stack.Screen
+            name="ExpensesOverview"
+            component={ExpensesOverview}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="ManageExpense"
+            component={ManageExpenses}
+            options={{
+              presentation: "modal",
+            }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
+  );
+}
+
+const styles = StyleSheet.create({});

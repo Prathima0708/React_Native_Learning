@@ -306,6 +306,7 @@ import ManageExpenses from "./UdemyCourse/ExpenseTrackerApp/screens/ManageExpens
 import RecentExpenses from "./UdemyCourse/ExpenseTrackerApp/screens/RecentExpenses";
 import { Ionicons } from "@expo/vector-icons";
 import IconButton from "./UdemyCourse/ExpenseTrackerApp/components/UI/IconButton";
+import ExpensesContextProvider from "./UdemyCourse/ExpenseTrackerApp/store/expenses-context";
 const Stack = createNativeStackNavigator();
 const BottomTabs = createBottomTabNavigator();
 
@@ -362,30 +363,32 @@ function ExpensesOverview() {
 export default function App() {
   return (
     <>
-      <StatusBar style="auto" />
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerStyle: { backgroundColor: GlobalStyles.colors.primary500 },
-            headerTintColor: "white",
-          }}
-        >
-          <Stack.Screen
-            name="ExpensesOverview"
-            component={ExpensesOverview}
-            options={{
-              headerShown: false,
+      <StatusBar style="light" />
+      <ExpensesContextProvider>
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={{
+              headerStyle: { backgroundColor: GlobalStyles.colors.primary500 },
+              headerTintColor: "white",
             }}
-          />
-          <Stack.Screen
-            name="ManageExpense"
-            component={ManageExpenses}
-            options={{
-              presentation: "modal",
-            }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+          >
+            <Stack.Screen
+              name="ExpensesOverview"
+              component={ExpensesOverview}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Stack.Screen
+              name="ManageExpense"
+              component={ManageExpenses}
+              options={{
+                presentation: "modal",
+              }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </ExpensesContextProvider>
     </>
   );
 }

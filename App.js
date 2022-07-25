@@ -296,101 +296,168 @@
 // }
 
 //Expense Tracker Example
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+// import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+// import { NavigationContainer } from "@react-navigation/native";
+// import { createNativeStackNavigator } from "@react-navigation/native-stack";
+// import { StatusBar, StyleSheet } from "react-native";
+// import { GlobalStyles } from "./UdemyCourse/ExpenseTrackerApp/constants/styles";
+// import AllExpenses from "./UdemyCourse/ExpenseTrackerApp/screens/AllExpenses";
+// import ManageExpenses from "./UdemyCourse/ExpenseTrackerApp/screens/ManageExpenses";
+// import RecentExpenses from "./UdemyCourse/ExpenseTrackerApp/screens/RecentExpenses";
+// import { Ionicons } from "@expo/vector-icons";
+// import IconButton from "./UdemyCourse/ExpenseTrackerApp/components/UI/IconButton";
+// import ExpensesContextProvider from "./UdemyCourse/ExpenseTrackerApp/store/expenses-context";
+// const Stack = createNativeStackNavigator();
+// const BottomTabs = createBottomTabNavigator();
+
+// function ExpensesOverview() {
+//   return (
+//     <BottomTabs.Navigator
+//       screenOptions={({ navigation }) => ({
+//         headerStyle: { backgroundColor: GlobalStyles.colors.primary500 },
+//         headerTintColor: "white",
+//         tabBarStyle: { backgroundColor: GlobalStyles.colors.primary500 },
+//         tabBarActiveTintColor: GlobalStyles.colors.accent500,
+//         headerRight: ({ tintColor }) => (
+//           <IconButton
+//             icon="add"
+//             color={tintColor}
+//             size={24}
+//             onPress={() => {
+//               navigation.navigate("ManageExpense");
+//             }}
+//           />
+//         ),
+//       })}
+//     >
+//       <BottomTabs.Screen
+//         name="RecentExpenses"
+//         component={RecentExpenses}
+//         options={{
+//           title: "Recent Expenses",
+//           tabBarLabel: "Recent",
+//           tabBarIcon: ({ color, size }) => (
+//             <Ionicons name="hourglass" color={color} size={size} />
+//           ),
+//         }}
+//       />
+//       <BottomTabs.Screen
+//         name="AllExpenses"
+//         component={AllExpenses}
+//         options={{
+//           title: "All Expenses",
+//           tabBarLabel: "All Expenses",
+//           tabBarIcon: ({ color, size }) => (
+//             <Ionicons
+//               name="calendar"
+//               color={color}
+//               size={size}
+//               onPress={() => {}}
+//             />
+//           ),
+//         }}
+//       />
+//     </BottomTabs.Navigator>
+//   );
+// }
+// export default function App() {
+//   return (
+//     <>
+//       <StatusBar style="light" />
+//       <ExpensesContextProvider>
+//         <NavigationContainer>
+//           <Stack.Navigator
+//             screenOptions={{
+//               headerStyle: { backgroundColor: GlobalStyles.colors.primary500 },
+//               headerTintColor: "white",
+//             }}
+//           >
+//             <Stack.Screen
+//               name="ExpensesOverview"
+//               component={ExpensesOverview}
+//               options={{
+//                 headerShown: false,
+//               }}
+//             />
+//             <Stack.Screen
+//               name="ManageExpense"
+//               component={ManageExpenses}
+//               options={{
+//                 presentation: "modal",
+//               }}
+//             />
+//           </Stack.Navigator>
+//         </NavigationContainer>
+//       </ExpensesContextProvider>
+//     </>
+//   );
+// }
+
+// const styles = StyleSheet.create({});
+
+//User Authentication
+
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { StatusBar, StyleSheet } from "react-native";
-import { GlobalStyles } from "./UdemyCourse/ExpenseTrackerApp/constants/styles";
-import AllExpenses from "./UdemyCourse/ExpenseTrackerApp/screens/AllExpenses";
-import ManageExpenses from "./UdemyCourse/ExpenseTrackerApp/screens/ManageExpenses";
-import RecentExpenses from "./UdemyCourse/ExpenseTrackerApp/screens/RecentExpenses";
-import { Ionicons } from "@expo/vector-icons";
-import IconButton from "./UdemyCourse/ExpenseTrackerApp/components/UI/IconButton";
-import ExpensesContextProvider from "./UdemyCourse/ExpenseTrackerApp/store/expenses-context";
-const Stack = createNativeStackNavigator();
-const BottomTabs = createBottomTabNavigator();
+import { StatusBar } from "expo-status-bar";
+import { useContext } from "react";
+import { Colors } from "./UdemyCourse/UserAuthentication/constants/styles";
 
-function ExpensesOverview() {
+import LoginScreen from "./UdemyCourse/UserAuthentication/screens/LoginScreen";
+import SignupScreen from "./UdemyCourse/UserAuthentication/screens/SignupScreen";
+import AuthContextProvider, {
+  AuthContext,
+} from "./UdemyCourse/UserAuthentication/store/auth-context";
+
+const Stack = createNativeStackNavigator();
+
+function AuthStack() {
   return (
-    <BottomTabs.Navigator
-      screenOptions={({ navigation }) => ({
-        headerStyle: { backgroundColor: GlobalStyles.colors.primary500 },
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: Colors.primary500 },
         headerTintColor: "white",
-        tabBarStyle: { backgroundColor: GlobalStyles.colors.primary500 },
-        tabBarActiveTintColor: GlobalStyles.colors.accent500,
-        headerRight: ({ tintColor }) => (
-          <IconButton
-            icon="add"
-            color={tintColor}
-            size={24}
-            onPress={() => {
-              navigation.navigate("ManageExpense");
-            }}
-          />
-        ),
-      })}
+        contentStyle: { backgroundColor: Colors.primary100 },
+      }}
     >
-      <BottomTabs.Screen
-        name="RecentExpenses"
-        component={RecentExpenses}
-        options={{
-          title: "Recent Expenses",
-          tabBarLabel: "Recent",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="hourglass" color={color} size={size} />
-          ),
-        }}
-      />
-      <BottomTabs.Screen
-        name="AllExpenses"
-        component={AllExpenses}
-        options={{
-          title: "All Expenses",
-          tabBarLabel: "All Expenses",
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons
-              name="calendar"
-              color={color}
-              size={size}
-              onPress={() => {}}
-            />
-          ),
-        }}
-      />
-    </BottomTabs.Navigator>
+      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Signup" component={SignupScreen} />
+    </Stack.Navigator>
   );
 }
+
+function AuthenticatedStack() {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: Colors.primary500 },
+        headerTintColor: "white",
+        contentStyle: { backgroundColor: Colors.primary100 },
+      }}
+    >
+      <Stack.Screen name="Welcome" component={WelcomeScreen} />
+    </Stack.Navigator>
+  );
+}
+
+function Navigation() {
+  const authCtx = useContext(AuthContext);
+
+  return (
+    <NavigationContainer>
+      {!authCtx.isAuthenticated && <AuthStack />}
+      {authCtx.isAuthenticated && <AuthenticatedStack />}
+    </NavigationContainer>
+  );
+}
+
 export default function App() {
   return (
     <>
       <StatusBar style="light" />
-      <ExpensesContextProvider>
-        <NavigationContainer>
-          <Stack.Navigator
-            screenOptions={{
-              headerStyle: { backgroundColor: GlobalStyles.colors.primary500 },
-              headerTintColor: "white",
-            }}
-          >
-            <Stack.Screen
-              name="ExpensesOverview"
-              component={ExpensesOverview}
-              options={{
-                headerShown: false,
-              }}
-            />
-            <Stack.Screen
-              name="ManageExpense"
-              component={ManageExpenses}
-              options={{
-                presentation: "modal",
-              }}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </ExpensesContextProvider>
+      <AuthContextProvider>
+        <Navigation />
+      </AuthContextProvider>
     </>
   );
 }
-
-const styles = StyleSheet.create({});

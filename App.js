@@ -506,6 +506,7 @@ import AllPlaces from "./UdemyCourse/NativeDeviceFeatures/screens/AllPlaces";
 import AddPlace from "./UdemyCourse/NativeDeviceFeatures/screens/AddPlace";
 import IconButton from "./UdemyCourse/NativeDeviceFeatures/components/UI/IconButton";
 import { Colors } from "./UdemyCourse/NativeDeviceFeatures/constants/colors";
+import Map from "./UdemyCourse/NativeDeviceFeatures/screens/Map";
 
 const Stack = createStackNavigator();
 export default function App() {
@@ -544,6 +545,7 @@ export default function App() {
               title: "Add a new place",
             }}
           />
+          <Stack.Screen name="Map" component={Map} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

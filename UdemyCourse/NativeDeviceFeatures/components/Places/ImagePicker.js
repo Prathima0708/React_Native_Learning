@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Colors } from "../../constants/colors";
 import OutLinedButton from "../UI/OutLinedButton";
 
-function ImagePicker() {
+function ImagePicker({ onTakeImage }) {
   const [pickedImage, setPickedImage] = useState();
   async function takeImageHandler() {
     const image = await launchCameraAsync({
@@ -13,6 +13,7 @@ function ImagePicker() {
       quality: 0.5,
     });
     setPickedImage(image.uri);
+    onTakeImage(image.uri);
   }
   let imagePreview = <Text>No image taken yet</Text>;
   if (pickedImage) {

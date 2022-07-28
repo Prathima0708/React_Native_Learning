@@ -157,103 +157,103 @@
 
 //Drawer Example//
 
-// import { StatusBar, StyleSheet, Text } from "react-native";
-// import CategoriesScreen from "./UdemyCourse/Meals/screens/CategoriesScreen";
-// import { NavigationContainer } from "@react-navigation/native";
-// import { createNativeStackNavigator } from "@react-navigation/native-stack";
-// import MealsOverviewScreen from "./UdemyCourse/Meals/screens/MealsOverviewScreen";
-// import MealDetailScreen from "./UdemyCourse/Meals/screens/MealDetailScreen";
-// import { createDrawerNavigator } from "@react-navigation/drawer";
-// import FavoritesScreen from "./UdemyCourse/Meals/screens/FavoritesScreen";
-// import { Ionicons } from "@expo/vector-icons";
-// import FavoritesContextProvider from "./UdemyCourse/Meals/store/context/favorites-context";
-// import { Provider } from "react-redux";
-// import { store } from "./UdemyCourse/Meals/store/redux/store";
+import { StatusBar, StyleSheet, Text } from "react-native";
+import CategoriesScreen from "./UdemyCourse/Meals/screens/CategoriesScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import MealsOverviewScreen from "./UdemyCourse/Meals/screens/MealsOverviewScreen";
+import MealDetailScreen from "./UdemyCourse/Meals/screens/MealDetailScreen";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import FavoritesScreen from "./UdemyCourse/Meals/screens/FavoritesScreen";
+import { Ionicons } from "@expo/vector-icons";
+import FavoritesContextProvider from "./UdemyCourse/Meals/store/context/favorites-context";
+import { Provider } from "react-redux";
+import { store } from "./UdemyCourse/Meals/store/redux/store";
 
-// const Stack = createNativeStackNavigator();
-// const Drawer = createDrawerNavigator();
+const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
-// function DrawerNavigator() {
-//   return (
-//     <Drawer.Navigator
-//       screenOptions={{
-//         headerStyle: { backgroundColor: "#351401" },
-//         headerTintColor: "white",
-//         sceneContainerStyle: {
-//           backgroundColor: "#3f2f25",
-//         },
-//         drawerContentStyle: {
-//           backgroundColor: "#351401",
-//         },
-//         drawerInactiveTintColor: "white",
-//         drawerActiveTintColor: "#351401",
-//         drawerActiveBackgroundColor: "#e4baa1",
-//       }}
-//     >
-//       <Drawer.Screen
-//         name="Categories"
-//         component={CategoriesScreen}
-//         options={{
-//           title: "All Categories",
-//           drawerIcon: ({ color, size }) => (
-//             <Ionicons name="list" color={color} size={size} />
-//           ),
-//         }}
-//       />
-//       <Drawer.Screen
-//         name="Favorites"
-//         component={FavoritesScreen}
-//         options={{
-//           title: "Favorites",
-//           drawerIcon: ({ color, size }) => (
-//             <Ionicons name="star" color={color} size={size} />
-//           ),
-//         }}
-//       />
-//     </Drawer.Navigator>
-//   );
-// }
-// export default function App() {
-//   return (
-//     <>
-//       <StatusBar style="light" />
-//       <FavoritesContextProvider>
-//         <NavigationContainer>
-//           <Stack.Navigator
-//             screenOptions={{
-//               headerStyle: { backgroundColor: "#351401" },
-//               headerTintColor: "white",
-//               contentStyle: {
-//                 backgroundColor: "#3f2f25",
-//               },
-//             }}
-//           >
-//             <Stack.Screen
-//               name="Drawer"
-//               component={DrawerNavigator}
-//               options={{
-//                 headerShown: false,
-//               }}
-//             />
-//             <Stack.Screen
-//               name="MealsOverview"
-//               component={MealsOverviewScreen}
-//             />
-//             <Stack.Screen
-//               name="MealDetail"
-//               component={MealDetailScreen}
-//               options={{
-//                 title: "About the Meal",
-//               }}
-//             />
-//           </Stack.Navigator>
-//         </NavigationContainer>
-//       </FavoritesContextProvider>
-//     </>
-//   );
-// }
+function DrawerNavigator() {
+  return (
+    <Drawer.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: "#351401" },
+        headerTintColor: "white",
+        sceneContainerStyle: {
+          backgroundColor: "#3f2f25",
+        },
+        drawerContentStyle: {
+          backgroundColor: "#351401",
+        },
+        drawerInactiveTintColor: "white",
+        drawerActiveTintColor: "#351401",
+        drawerActiveBackgroundColor: "#e4baa1",
+      }}
+    >
+      <Drawer.Screen
+        name="Categories"
+        component={CategoriesScreen}
+        options={{
+          title: "All Categories",
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="list" color={color} size={size} />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Favorites"
+        component={FavoritesScreen}
+        options={{
+          title: "Favorites",
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="star" color={color} size={size} />
+          ),
+        }}
+      />
+    </Drawer.Navigator>
+  );
+}
+export default function App() {
+  return (
+    <>
+      <StatusBar style="light" />
+      <FavoritesContextProvider>
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={{
+              headerStyle: { backgroundColor: "#351401" },
+              headerTintColor: "white",
+              contentStyle: {
+                backgroundColor: "#3f2f25",
+              },
+            }}
+          >
+            <Stack.Screen
+              name="Drawer"
+              component={DrawerNavigator}
+              options={{
+                headerShown: false,
+              }}
+            />
+            <Stack.Screen
+              name="MealsOverview"
+              component={MealsOverviewScreen}
+            />
+            <Stack.Screen
+              name="MealDetail"
+              component={MealDetailScreen}
+              options={{
+                title: "About the Meal",
+              }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </FavoritesContextProvider>
+    </>
+  );
+}
 
-// const styles = StyleSheet.create({});
+const styles = StyleSheet.create({});
 
 // import { NavigationContainer } from "@react-navigation/native";
 // import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -499,55 +499,79 @@
 
 //Native Device Features Section:
 
-import { StatusBar } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import AllPlaces from "./UdemyCourse/NativeDeviceFeatures/screens/AllPlaces";
-import AddPlace from "./UdemyCourse/NativeDeviceFeatures/screens/AddPlace";
-import IconButton from "./UdemyCourse/NativeDeviceFeatures/components/UI/IconButton";
-import { Colors } from "./UdemyCourse/NativeDeviceFeatures/constants/colors";
-import Map from "./UdemyCourse/NativeDeviceFeatures/screens/Map";
+// import { StatusBar } from "react-native";
+// import { NavigationContainer } from "@react-navigation/native";
+// import { createStackNavigator } from "@react-navigation/stack";
+// import AllPlaces from "./UdemyCourse/NativeDeviceFeatures/screens/AllPlaces";
+// import AddPlace from "./UdemyCourse/NativeDeviceFeatures/screens/AddPlace";
+// import IconButton from "./UdemyCourse/NativeDeviceFeatures/components/UI/IconButton";
+// import { Colors } from "./UdemyCourse/NativeDeviceFeatures/constants/colors";
+// import Map from "./UdemyCourse/NativeDeviceFeatures/screens/Map";
+// import { useEffect, useState } from "react";
+// import { init } from "./UdemyCourse/NativeDeviceFeatures/utils/database";
+// import AppLoading from "expo-app-loading";
+// import PlaceDetails from "./UdemyCourse/NativeDeviceFeatures/screens/PlaceDetails";
 
-const Stack = createStackNavigator();
-export default function App() {
-  return (
-    <>
-      <StatusBar style="dark" />
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerStyle: {
-              backgroundColor: Colors.primary500,
-            },
-            headerTintColor: Colors.gray700,
-            cardStyle: { backgroundColor: Colors.gray700 },
-          }}
-        >
-          <Stack.Screen
-            name="AllPlaces"
-            component={AllPlaces}
-            options={({ navigation }) => ({
-              title: "Your favorite places",
-              headerRight: ({ tintColor }) => (
-                <IconButton
-                  icon="add"
-                  size={24}
-                  color={tintColor}
-                  onPress={() => navigation.navigate("AddPlace")}
-                />
-              ),
-            })}
-          />
-          <Stack.Screen
-            name="AddPlace"
-            component={AddPlace}
-            options={{
-              title: "Add a new place",
-            }}
-          />
-          <Stack.Screen name="Map" component={Map} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </>
-  );
-}
+// const Stack = createStackNavigator();
+// export default function App() {
+//   const [dbInitialized, setDbInitialized] = useState(false);
+//   useEffect(() => {
+//     init()
+//       .then(() => {
+//         setDbInitialized(true);
+//       })
+//       .catch((err) => {
+//         console.log(err);
+//       });
+//   }, []);
+//   if (!dbInitialized) {
+//     return <AppLoading />;
+//   }
+//   return (
+//     <>
+//       <StatusBar style="dark" />
+//       <NavigationContainer>
+//         <Stack.Navigator
+//           screenOptions={{
+//             headerStyle: {
+//               backgroundColor: Colors.primary500,
+//             },
+//             headerTintColor: Colors.gray700,
+//             cardStyle: { backgroundColor: Colors.gray700 },
+//           }}
+//         >
+//           <Stack.Screen
+//             name="AllPlaces"
+//             component={AllPlaces}
+//             options={({ navigation }) => ({
+//               title: "Your favorite places",
+//               headerRight: ({ tintColor }) => (
+//                 <IconButton
+//                   icon="add"
+//                   size={24}
+//                   color={tintColor}
+//                   onPress={() => navigation.navigate("AddPlace")}
+//                 />
+//               ),
+//             })}
+//           />
+//           <Stack.Screen
+//             name="AddPlace"
+//             component={AddPlace}
+//             options={{
+//               title: "Add a new place",
+//             }}
+//           />
+//           <Stack.Screen name="Map" component={Map} />
+//           <Stack.Screen
+//             name="PlaceDetails"
+//             component={PlaceDetails}
+//             options={{
+//               title: "Loading Place...",
+//             }}
+//           />
+//         </Stack.Navigator>
+//       </NavigationContainer>
+//     </>
+//   );
+// }
